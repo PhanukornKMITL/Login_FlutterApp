@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:login_app/Profile/profile.dart';
+import 'package:login_app/main.dart';
 
 
 class LoginPage extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
-        fontFamily: 'Nunito',
-      ),
-      home: Scaffold(
+    return Scaffold(
         //กัน buttom overflow
         //resizeToAvoidBottomInset: false,
         body: SafeArea(
@@ -58,7 +53,9 @@ class LoginPage extends StatelessWidget {
                       child: MaterialButton(
                         minWidth: 300.0,
                         height: 50.0,
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.pushReplacementNamed(context, "/profile");
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.lightBlueAccent)
@@ -67,36 +64,33 @@ class LoginPage extends StatelessWidget {
                         child: Text('Log In',style: TextStyle(color: Colors.white),),
                       ),
                     ),
-                        Row(
-                        children: <Widget>[
-                          SizedBox(width: 160,),
-                          TextButton(onPressed: (){}, child: Text("Forgot Password?",style: TextStyle(color: Colors.grey[700])),),
-                          ],
-                        ),
+                    Row(
+                      children: <Widget>[
+                        SizedBox(width: 160,),
+                        TextButton(onPressed: (){}, child: Text("Forgot Password?",style: TextStyle(color: Colors.grey[700])),),
+                      ],
+                    ),
 
                     Text("- OR -"),
                     SizedBox(height: 10,),
                     Text("Sign in with"),
                     SizedBox(height: 20,),
-                   Row(
-                     mainAxisAlignment: MainAxisAlignment.center,
-                     children: <Widget>[
-                       IconButton(icon:  Image.asset("assets/google.jpg", scale: 0.3,), onPressed: (){}),
-                       IconButton(icon:  Image.asset("assets/Facebook.png", scale: 0.3), onPressed: (){}),
-                     ],
-                   ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        IconButton(icon:  Image.asset("assets/google.jpg", scale: 0.3,), onPressed: (){}),
+                        IconButton(icon:  Image.asset("assets/Facebook.png", scale: 0.3), onPressed: (){}),
+                      ],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text("Don't have an account?"),
-                        TextButton(onPressed: (){}, child: Text("Sign Up"))
+                        TextButton(onPressed: (){
+                          Navigator.pushNamed(context, "/register");
+                        }, child: Text("Sign Up"))
                       ],
                     ),
-
-
-
-
-
 
                   ],
                 ),
@@ -104,7 +98,7 @@ class LoginPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
+
   }
 }
